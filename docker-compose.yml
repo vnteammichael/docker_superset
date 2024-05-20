@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 services:
   superset:
     build: .
@@ -8,17 +8,17 @@ services:
     restart: unless-stopped
     ports:
       - "8088:8088"
+    environment:
+      REDIS_URL: "redis://redis:6379/0"
     volumes:
       - superset_home:/app/superset_home
       - ./superset_config.py:/app/superset_config.py
-    networks:
-      - app-network
 
   mysql:
     image: mysql:5.7
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: data_warehouse
+      MYSQL_DATABASE: superset
       MYSQL_USER: data
       MYSQL_PASSWORD: sh2vfaKW89uH
       MYSQL_ROOT_PASSWORD: sh2vfaKW89uH
@@ -27,8 +27,6 @@ services:
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - mysql_data:/var/lib/mysql
-    networks:
-      - app-network
 
   redis:
     image: redis:latest
@@ -36,14 +34,8 @@ services:
     restart: unless-stopped
     volumes:
       - redis_data:/data
-    networks:
-      - app-network
 
 volumes:
   superset_home:
   mysql_data:
   redis_data:
-  
-networks:
-  app-network:
-    driver: bridge

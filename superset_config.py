@@ -1,5 +1,5 @@
 # Cấu hình database URI
-SQLALCHEMY_DATABASE_URI = "mysql+pymysql://data:sh2vfaKW89uH@mysql:3307/data_warehouse?charset=utf8mb4"
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://data:sh2vfaKW89uH@mysql:3306/superset?charset=utf8mb4"
 
 # Cấu hình cho phép embedding dashboard
 ENABLE_JWT_COOKIE_AUTHENTICATION = True
@@ -9,7 +9,7 @@ SESSION_COOKIE_SAMESITE = 'Lax'
 SESSION_COOKIE_SECURE = True
 ENABLE_PROXY_FIX = True
 
-SECRET_KEY = 'bvvEF+5qFxABJk1CB1u2IpWouEpRywCI6ew5UVXme9sLACcNn9uLlZuS'
+
 
 CORS_OPTIONS = {
 'supports_credentials': True,
