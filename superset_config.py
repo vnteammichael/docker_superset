@@ -9,7 +9,11 @@ SESSION_COOKIE_SAMESITE = 'Lax'
 SESSION_COOKIE_SECURE = True
 ENABLE_PROXY_FIX = True
 
+WTF_CSRF_ENABLED = True
+WTF_CSRF_TIME_LIMIT = 3600  # Optional: Adjust as necessary
 
+
+SECRET_KEY = '3cnaT6EdiEQIovgtzmtRYOx4fzWO+gVlKTJHsybaVp0e9FIp9qqDH/K7'
 
 CORS_OPTIONS = {
 'supports_credentials': True,
